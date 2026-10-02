@@ -28,10 +28,13 @@ Full definitions are in [docs/kpi_definitions.md](docs/kpi_definitions.md).
 | Balance at risk | churned balance / total balance | Weights churn by money | Many zero-balance customers; large accounts can dominate |
 
 ## Screenshots
-![Overview](screenshots/dashboard_overview.png)
-![Germany filter](screenshots/dashboard_germany.png)
-![Segment table](screenshots/segment_table.png)
-![Churn drivers](screenshots/churn_drivers.png)
+![Overview 1](screenshots/dashboard_overview1.png)
+![Overview 2](screenshots/dashboard_overview2.png)
+![Germany filter 1](screenshots/dashboard_germany1.png)
+![Germany filter 2](screenshots/dashboard_germany2.png)
+![Segment table](screenshots/segments_table.png)
+![Churn drivers: chart](screenshots/churn_drivers1.png)
+![Churn drivers: table](screenshots/churn_drivers2.png)
 
 ## Findings
 - **Overall churn is 20.37%** (2,037 of 10,000 customers).
