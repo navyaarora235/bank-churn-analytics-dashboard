@@ -88,3 +88,26 @@ col4.plotly_chart(churn_chart("is_active_member", "Churn rate: inactive (0) vs a
 col5, _ = st.columns(2)
 col5.plotly_chart(churn_chart("balance_band", "Churn rate by balance band",
                               "Balance band"), width="stretch")
+
+# ---------- Segment table ----------
+st.divider()
+st.subheader("Segment table: size, churn rate and lift")
+
+segment_options = {
+    "Country": "geography",
+    "Gender": "gender",
+    "Age group": "age_group",
+    "Number of products": "num_of_products",
+    "Member status (0 = inactive, 1 = active)": "is_active_member",
+    "Balance band": "balance_band",
+}
+choice = st.selectbox("Segment by", list(segment_options.keys()))
+
+seg = get_segment_table(segment_options[choice], where, params)
+seg["share_of_customers_pct"] = (100.0 * seg["customers"] / seg["customers"].sum()).round(2)
+seg["note"] = seg["customers"].apply(lambda n: "Small group: interpret with care" if n < 300 else "")
+seg = seg.sort_values("lift", ascending=False)
+
+st.dataframe(seg, hide_index=True, width="stretch")
+st.caption("Lift = segment churn rate / churn rate of the current selection. "
+           "Lift above 1 means the segment churns more than average.")
